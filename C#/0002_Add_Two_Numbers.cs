@@ -19,9 +19,13 @@ public class Solution {
 
         ListNode thisListNode = new ListNode(val);
 
-        if (l1.next == null && l2.next == null)
+        if (l1.next == null && l2.next == null && carryFlag != 0)
         {
-            thisListNode.val += carryFlag;
+            thisListNode.next = new ListNode(carryFlag);
+            return thisListNode;
+        }
+        else if (l1.next == null && l2.next == null)
+        {
             return thisListNode;
         }
         else if (l1.next == null)
@@ -38,8 +42,7 @@ public class Solution {
         {
             l1.next.val += carryFlag;
             thisListNode.next = AddTwoNumbers(l1.next, l2.next);
-        }
-
+        }              
         return thisListNode;
     }
 }
